@@ -1,0 +1,10 @@
+<!-- $Id: _group.html.erb 201 2010-01-04 04:32:03Z nicb $ -->
+<div class="event_group" style="height: <%= group[:group].height -%>px;">
+  <% group[:columns].each do |c| -%>
+    <div class="event_group_inner_column" style="width: <%= group[:group].column_width -%>%; height: <%= group[:group].height -%>px;">
+      <% c[:events].each do |e| -%>
+        <%= render(:partial => e.template, :object => e.object) -%>
+      <% end -%>
+    </div>
+  <% end -%>
+</div>

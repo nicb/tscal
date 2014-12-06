@@ -1,0 +1,35 @@
+<!--
+$Id: edit_lesson.html.erb 250 2010-04-10 12:38:28Z moro $
+-->
+<h1>Modifica la lezione del corso di <%= @lesson.topic.display_tooltip %></h1>
+<p>
+  <% form_for(@lesson) do |f| %>
+    <%= f.error_messages %>
+
+  <table>
+    <tr>
+      <td><%= f.label :start_date, 'Giorno' -%></td>
+      <td><%= f.date_select :start_date, :prefix => "lesson[start_date]", :order => [:day, :month, :year] -%></td>
+    </tr>
+    <tr>
+      <td><%= f.label :start_date, 'Inizio alle ore' -%></td>
+      <td><%= select_lesson_hour @lesson.start_date.hour, :prefix => "lesson[start_date]" -%>:&nbsp;<%= select_minute @lesson.start_date.min, :prefix => "lesson[start_date]", :minute_step => 15 %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :duration, 'Durata della lezione' -%></td>
+      <td><%= f.text_field :duration -%> minuti</p></td>
+    </tr>
+		<tr>
+			<td><%= f.label :place_id, 'Sede della lezione' -%></td>
+			<td><%= f.select :place_id, Place.find(:all).collect {|p| [ p.name, p.id ] }, { :include_blank => true, :selected => @lesson.place_id.to_i } -%></td>
+		
+		</tr>
+  </table>
+
+  <p>
+    <%= f.submit "Modifica" %>
+  </p>
+<% end %>
+<%= link_to 'Annulla', get_link_to_back(:controller => :calendar, :action => :show_js) %>
+<%= link_to 'elimina', :controller => :lesson, :action => :delete, :id => @lesson.id, :date => @lesson.start_date %>
+

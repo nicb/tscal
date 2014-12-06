@@ -1,0 +1,32 @@
+<!--
+$Id: show.html.erb 212 2010-01-29 06:13:04Z nicb $
+-->
+<h1>Insegnamento di <i><%= @at_activated_topic.name -%></i></h1>
+<table>
+  <tr>
+    <td>Nome dell'insegnamento:</td>
+    <td><%= @at_activated_topic.topic.name%></td>
+  </tr>
+  <tr>
+    <td>Attivato per i corsi di:</td>
+    <td><%= @at_activated_topic.all_full_courses %></td>
+  </tr>
+  <tr>
+    <td>Docente:</td>
+    <td><%= @at_activated_topic.teacher.full_name %></td>
+  </tr>
+  <tr>
+    <td>Semestre di partenza:</td>
+    <td><%= @at_activated_topic.semester_start %>°</td>
+  </tr>
+  <tr>
+    <td>Durata:</td>
+    <td><%= @at_activated_topic.duration -%> ore</td>
+  </tr>
+  <tr>
+    <td>Crediti:</td>
+    <td><%= @at_activated_topic.credits%></td>
+  </tr>
+</table>
+<%= link_to 'Edit', edit_at_activated_topic_path(@at_activated_topic) %> |
+<%= link_to 'Back', at_activated_topic_path %>

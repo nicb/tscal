@@ -1,0 +1,13 @@
+<!--
+$Id: edit.html.erb 212 2010-01-29 06:13:04Z nicb $
+-->
+<h1>Modifica l'insegnamento di <%= @at_activated_topic.name %> per <%= @at_activated_topic.all_full_courses %></h1>
+
+<% form_for(@at_activated_topic, { :url => at_activated_topic_path(@at_activated_topic.id), :method => :put }) do |f| %>
+  <%= render(:partial => 'at/activated_topics/form', :object => f, :locals => { :activated_topic => @at_activated_topic }) %>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', at_activated_topics_url %> |
+<%= link_to 'Back', at_activated_topic_url(@at_activated_topic.id) %>

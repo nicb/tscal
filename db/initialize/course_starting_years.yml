@@ -1,0 +1,10 @@
+#
+# $Id: course_starting_years.yml 134 2009-11-02 03:21:35Z nicb $
+#
+
+<% 2006.upto(2009) do |y| %>
+tds_<%= y.to_s %>:
+  course: tds
+  starting_year: year_<%= y.to_s %>
+  color: <%= sprintf("\"#%6x\"", (y + ((y - 2006)*1000)) | 0xff0000) %>
+<% end %>

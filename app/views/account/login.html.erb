@@ -1,0 +1,23 @@
+<!-- $Id: login.html.erb 253 2010-08-28 21:16:10Z nicb $ -->
+<div title="Account login" class="login_form">
+<% form_tag(:action => "login") do %>
+
+    <h3>Please login</h3>
+    
+    <% if flash['notice'] %>
+      <div id="message"><%= flash['notice'] %></div>
+    <% end %>
+
+    <label for="user_login">Login:</label><br/>
+	  <%= text_field('user', 'login', :size => 30, :maxsize => 40) %>
+	  <br />
+    <label for="user_password">Password:</label><br/>
+	  <%= password_field('user', 'password', :size => 30, :maxsize => 41) %>
+    <br/>
+	  <%= submit_tag('Login &#187;', :class => "primary") %>
+<% end %>
+<br /><br />
+<%= link_to('Nuovo Login? &#187;', :action => :signup) %>
+<br />
+<%= link_to('Vuoi tornare al calendario? &#187;', '/') %>
+</div>

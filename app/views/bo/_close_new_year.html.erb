@@ -1,0 +1,17 @@
+<!--
+$Id: _close_new_year.html.erb 208 2010-01-06 20:20:10Z nicb $
+-->
+<% @course = Course.find_by_id(params[:id]) %>
+<% if @course %>
+  <p>
+  Elenco degli anni attivati<br />
+  <%= link_to_remote("Attiva", :update => 'year', :url => { :action => :expand_new_year, :id => @course.id }) %>
+  <ul>
+  <% @course.course_starting_years.each do |csy| %>
+    <li>
+    <%= link_to(csy.starting_year, url_for(:action => :index, :id => csy.course_id, :year => csy.starting_year)) %>
+    </li>
+  <% end %>
+  </ul>
+  </p>
+<% end %>

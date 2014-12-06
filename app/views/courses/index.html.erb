@@ -1,0 +1,22 @@
+<!--
+$Id: index.html.erb 35 2009-02-25 23:12:53Z moro $
+-->
+<h1>Elenco dei Corsi</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @courses.each do |c| %>
+  <tr>
+    <td><%= link_to c.name, c %></td>
+    <td><%= c.duration %></td>
+    <td><%= link_to 'Modifica', edit_course_path(c) %></td>
+    <td><%= link_to 'Rimuovi', c, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Crea un nuovo corso', new_course_path %>

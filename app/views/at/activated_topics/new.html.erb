@@ -1,0 +1,13 @@
+<!--
+$Id: new.html.erb 224 2010-02-26 17:43:15Z mtisi $
+-->
+<h1>Attiva un nuovo insegnamento</h1>
+
+<% form_for(@at_activated_topic, :url => at_activated_topics_url) do |f| %>
+  <%= render(:partial => 'at/activated_topics/form', :object => f, :locals => { :activated_topic => @at_activated_topic }) -%>
+  <p>
+    <%= f.submit "Crea" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', :back %>

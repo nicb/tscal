@@ -1,0 +1,18 @@
+#
+# $Id: courses.yml 219 2010-02-21 02:06:34Z nicb $
+#
+
+tds:
+   name: "Tecnico di Sala di Registrazione"
+   acronym: "TS"
+   duration: 3
+
+bd:
+   name: "Biennio di Didattica"
+   acronym: "BD"
+   duration: 2
+
+ds:
+  name: "Metodologie e Tecniche Musicali per le Disabilità"
+  acronym: "DS"
+  duration: 3

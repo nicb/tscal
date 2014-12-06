@@ -1,0 +1,35 @@
+#
+# $Id: dates.txt 294 2012-09-02 04:58:25Z nicb $
+#
+# Format of these files should be as follow:
+#
+# field 1 = Description
+# field 2 = from date (included in blacklisted)
+# field 3 = to date (included in blacklisted)
+#
+# the field separator is a '|' (pipe character)
+# the dates must be in format 'dd/mm/yyyy'
+#
+# lines beginning with a '#' are comments
+# empty lines are ignored
+#
+
+Immacolata Concezione|08/12/2012|08/12/2012
+
+Vacanze natalizie|22/12/2012|05/01/2013
+
+Sessione Invernale Esami|18/02/2013|02/03/2013
+
+Vacanze pasquali|28/03/2013|03/04/2013
+
+Festa della Liberazione|25/04/2013|25/04/2013
+
+Festa del Lavoro|30/04/2013|01/05/2013
+
+Santo Patrono di Padova|13/06/2013|13/06/2013
+
+Sessione Estiva Esami|17/06/2013|27/07/2013
+
+Vacanze estive|01/08/2013|31/08/2013  
+
+Sessione Autunnale Esami|02/09/2013|28/09/2013

@@ -1,0 +1,33 @@
+#
+# $Id: course_starting_years.yml 291 2012-08-04 21:36:00Z nicb $
+#
+
+tds_one:
+  course: tds
+  starting_year: <%= CourseStartingYear::CURRENT_AA %>
+  color: '#ff0523'
+
+tds_two:
+  course: tds
+  starting_year: <%= CourseStartingYear::CURRENT_AA-1 %>
+  color: '#ff0543'
+
+tds_three:
+  course: tds
+  starting_year: <%= CourseStartingYear::CURRENT_AA-2 %>
+  color: '#ff0563'
+
+tds_old:
+  course: tds
+  starting_year: <%= CourseStartingYear::CURRENT_AA-4 %>
+  color: '#ff0583'
+
+bd_one:
+  course: bd
+  starting_year: <%= CourseStartingYear::CURRENT_AA %>
+  color: '#2305ff'
+
+tds_oldiximus:
+  course: tds
+  starting_year: <%= CourseStartingYear::CURRENT_AA-8 %>
+  color: '#00AABB'

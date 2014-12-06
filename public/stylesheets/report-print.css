@@ -1,0 +1,9 @@
+thead select, thead a {
+    display:none;
+}
+tr.odd {
+    font-weight:bold;
+}
+a { text-decoration:none; }
+a:visited { text-decoration:none; }
+a:hover { text-decoration:none; }

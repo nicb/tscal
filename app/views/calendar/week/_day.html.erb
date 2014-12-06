@@ -1,0 +1,6 @@
+<!-- $Id: _day.html.erb 201 2010-01-04 04:32:03Z nicb $ -->
+<div class="column" style="height: <%= day[:column].height -%>px;">
+	<% day[:events].each do |e| -%>
+    <%= render(:partial => e.template, :object => e.object) -%>
+	<% end -%>
+</div>

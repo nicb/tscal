@@ -1,0 +1,30 @@
+<h1>Mostra Professore - <i><%= @teacher.full_name %></i></h1>
+
+<table>
+<tr>
+	<td><b>Username:</b></td>
+	<td><%= @teacher.login %></td>
+</tr>
+<tr>
+	<td><b>Nome:</b></td>
+	<td><%= @teacher.first_name %></td>
+</tr>
+<tr>
+	<td><b>Cognome:</b></td>
+	<td><%= @teacher.last_name %></td>
+</tr>
+<tr>
+	<td><b>Email:</b></td>
+	<td><%= @teacher.email %></td>
+</tr>
+<tr>
+	<td><b>Website:</b></td>
+	<td><%= @teacher.url %></td>
+</tr>
+<tr>
+	<td><b>Tipologia:</b></td>
+	<td><%= @teacher.teacher_typology %></td>
+</tr>
+</table>
+
+<%= link_to 'Back', teachers_path %>

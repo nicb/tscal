@@ -1,0 +1,35 @@
+<!--
+$Id: new.html.erb 225 2010-03-01 11:49:11Z moro $
+-->
+<h1>Crea un Nuovo Insegnamento</h1>
+<% form_for(@topic) do |f| %>
+  <%= f.error_messages %>
+  <table>
+    <tr>
+      <td>Nome:</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td>Acronimo:</td>
+      <td><%= f.text_field :acronym %></td>
+    </tr>
+    <tr>
+      <td>Livello:</td>
+      <td><%= f.text_field :level %></td>
+    </tr>
+    <tr>
+      <td>Descrizione:</td>
+      <td><%= f.text_field :description %></td>
+    </tr>
+    <tr>
+      <td bgcolor="red">Colore:</td>
+      <td bgcolor="red"><%= f.text_field :color %> in hex value (ex: "#FF00FF")</td>
+    </tr>
+  </table>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', :back %>

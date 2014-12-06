@@ -1,0 +1,13 @@
+<!-- $Id: _lesson.html.erb 249 2010-03-29 15:24:47Z mtisi $ -->
+<div class="cell_lesson" id="event_<%= lesson.id -%>" style="height:<%= lesson.height -%>px; background-color: <%= lesson.course_color -%>" title="<%= lesson.full_info_tooltip -%><%= ", Luogo: " + lesson.place.name if lesson.place %>">
+  <div class="lesson_title" style="background-color: <%= lesson.background_color -%>;" title="<%= lesson.topic_display_tooltip -%>">
+    <%= auth_link_to lesson.topic_display, url_for(:controller => :lesson, :action => :edit_lesson, :id => lesson.id), { :style => "color: #{lesson.title_color}", :class => 'css_class' } %>
+  </div>
+  <ul class="lesson_list">
+    <li class="teacher"><%= lesson.activated_topic.teacher.full_name %></li>
+    <li class="time"><%= lesson.time %></li>
+    <li class="topic"><%= lesson.activated_topic.name %></li>
+    <li class="course"><%= lesson.course_display %></li>
+    <% if lesson.place %><li><%= lesson.place.name %></li><%end%>
+  </ul>
+</div>

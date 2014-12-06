@@ -1,0 +1,18 @@
+<!--
+$Id: new01.html.erb 237 2010-03-08 11:10:50Z moro $
+-->
+<h1>Crea le lezioni di <i><%= @at.name %></i></h1>
+<% form_tag(url_for(:action => :new02, :id => @at.id)) do %>
+<table cellspacing="0" >
+<% @days.each do |d| %>
+	<tr>
+		<td><%= d %></td>
+    <td><%= lesson_time_select("lesson[#{d}]", "time", {:minute_step => 15}) %></td>
+		<td>Durata (minuti): <%= text_field("lesson[#{d}]", "dur") %></td>
+		<td>Sede: <%= select("lesson[#{d}]", "place_id", Place.find(:all).collect {|p| [ p.name, p.id ] }, { :include_blank => true }) -%><br /></td>
+	</tr>
+<% end %>
+</table>
+<%= hidden_field_tag(:date_start, value = @date_start.to_i.to_s, options = {}) %>
+<%= submit_tag("Procedi") %><%= button_to_function("Cancella", 'window.back(); return false;') %>
+<% end %>

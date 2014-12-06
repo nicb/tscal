@@ -1,0 +1,15 @@
+<!-- $Id: _teacher_topic.html.erb 210 2010-01-26 18:35:22Z mtisi $ -->
+<tr class='teacher_topic_report <%= cycle('even','odd') %> '>
+  <td class='teacher_topic_report'>
+    <%=
+        link_to(teacher_topic.topic.name + ' ' + teacher_topic.topic.level.to_s,
+                url_for(:action => :lessons, :id => teacher_topic.id))
+    %>
+  </td>
+  <td class='teacher_topic_lesson_dates_report'>
+    <% if teacher_topic.active? %>
+      (dal <%= teacher_topic.lessons.first.start_date.strftime("%d/%m/%Y") -%>
+      al  <%= teacher_topic.lessons.last.start_date.strftime("%d/%m/%Y") -%>)
+    <% end %>
+  </td>
+</tr>

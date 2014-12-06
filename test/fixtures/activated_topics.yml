@@ -1,0 +1,52 @@
+#
+# $Id: activated_topics.yml 290 2012-07-31 01:45:43Z nicb $
+#
+
+informatica_year_one:
+  topic: informatica_1
+  teacher: nicb
+  credits: 2
+  duration: 10
+  semester_start: 1
+  delivery_type: 'TF'
+
+informatica_year_two:
+  topic: informatica_2
+  teacher: costa
+  credits: 2
+  duration: 10
+  semester_start: 1
+  delivery_type: 'TF'
+
+informatica_year_three:
+  topic: informatica_3
+  teacher: neve
+  credits: 2
+  duration: 10
+  semester_start: 1
+  delivery_type: 'TF'
+
+long_name_year_one:
+  topic: long_name
+  teacher: costa
+  credits: 8
+  duration: 50
+  semester_start: 2
+  delivery_type: 'CPc'
+
+an_old_course:
+  topic: sda
+  teacher: costa
+  credits: 8
+  duration: 50
+  semester_start: 2
+  delivery_type: 'CPc'
+
+pianoforte_year_one:
+  topic: pianoforte
+  teacher: costa
+  credits: 4
+  duration: 30
+  semester_start: 2
+  prerequisite: informatica_year_one
+  delivery_type: 'CPi'

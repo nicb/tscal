@@ -1,0 +1,24 @@
+<!--
+$Id: show.html.erb 237 2010-03-08 11:10:50Z moro $
+-->
+<h1><%= link_to @place.name, @place %></h1>
+<table>
+<tr>
+<td>Nome:</td><td><%= @place.name -%></td>
+</tr>
+<tr>
+<td>Via:</td><td><%= @place.street -%></td>
+</tr>
+<tr>
+<td>Numero civico:</td><td><%= @place.number -%></td>
+</tr>
+<tr>
+<td>Città:</td><td><%= @place.city -%></td>
+</tr>
+<tr>
+<td>Indirizzo mappa:</td><td><%= @place.url -%></td>
+</tr>
+</table>
+
+<%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Back', places_path %>

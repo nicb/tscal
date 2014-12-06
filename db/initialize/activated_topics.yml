@@ -1,0 +1,33 @@
+#
+# $Id: activated_topics.yml 134 2009-11-02 03:21:35Z nicb $
+#
+
+<% 1.upto(2) do |l| %>
+elettroacustica_tds_<%= l.to_i %>:
+  topic: elettroacustica_<%= l.to_i %>
+  teacher: costa
+  credits: 5
+  duration: 40
+  semester_start: 1
+  course_starting_year: tds_<%= (2009 - (l - 1)) %>
+<% end %>
+
+<% 1.upto(3) do |l| %>
+tar_tds_<%= l.to_i %>:
+  topic: tar_<%= l.to_i %>
+  teacher: costa
+  credits: 3
+  duration: 20
+  semester_start: <%= (((l-1) % 2)+1).to_s %>
+  course_starting_year: tds_<%= (2009 - ((l-1) * 0.5).floor) %>
+<% end %>
+
+<% 1.upto(3) do |l| %>
+taensm_tds_<%= l.to_i %>:
+  topic: taensm_<%= l.to_i %>
+  teacher: nicb
+  credits: 3
+  duration: 20
+  semester_start: <%= (((l-1) % 2)+1).to_s %>
+  course_starting_year: tds_<%= (2009 - ((l-1) * 0.5).floor) %>
+<% end %>

@@ -1,0 +1,12 @@
+<!--
+$Id: show.html.erb 125 2009-10-30 01:58:27Z moro $
+-->
+<h1><%= @topic.name -%></h1>
+  <ul>
+    <li>Nome: <%= @topic.name %></li>
+		<li>Acronimo: <%= @topic.acronym %></li>
+    <li>Livello: <%= @topic.level %>
+    <li>Descrizione: <%= @topic.description %>
+  </ul>
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>

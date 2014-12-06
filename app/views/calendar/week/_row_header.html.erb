@@ -1,0 +1,6 @@
+<!-- $Id: _row_header.html.erb 210 2010-01-26 18:35:22Z mtisi $ -->
+<div class="column_hours">
+  <% row_header.each do |rh| -%>
+    <%= render(:partial => rh.template, :object => rh.object) -%>
+  <% end -%>
+</div>

@@ -1,0 +1,6 @@
+<!-- $Id: _display.html.erb 201 2010-01-04 04:32:03Z nicb $ -->
+<div id="calendar_body">
+  <% display.each do |d| -%>
+    <%= render(:partial => d.template, :object => d.object) -%>
+  <% end -%>
+</div>

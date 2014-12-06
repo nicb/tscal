@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+#
+# $Id: clone_csy 265 2010-09-02 20:51:03Z nicb $
+#
+ENV['RAILS_ENV'] ||= 'production'
+require File.dirname(__FILE__) + '/../../config/boot'
+require File.dirname(__FILE__) + '/../../config/environment'
+require 'import/csy_clone'
+
+courses = Course.all
+unless ARGV.size == 2
+  $stderr.puts("Usage: #{$0} <course acro> <course starting year>\n\t<course starting year> must be in format yyyy\n\tcourse acronyms:")
+  courses.map { |c| printf("\t%-20s %s\n", c.acronym + ':', c.name) }
+  exit(-1)
+end
+
+c = Course.find_by_acronym(ARGV[0])
+raise(ActiveRecord::RecordNotFound, "could not find \"#{ARGV[0]}\" course acronym") unless c
+k = Import::CsyClone::MultiCloner.new(ARGV[1], c)
+raise(StandardError, "could not create Multicloner.new(#{ARGV[1]}, c)") unless k
+k.clone
+
+exit(0)

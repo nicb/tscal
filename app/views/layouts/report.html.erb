@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'reset', :media => 'all' %>
+  <%= stylesheet_link_tag 'report', :media => 'all' %>
+  <%= stylesheet_link_tag 'report-print', :media => 'print' %>
+</head>
+<body>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= yield %>
+<!-- this script with log the access to this page;
+cfr http://lloogg.com -->
+<script type="text/javascript">
+lloogg_clientid = "21110018b652cdea";
+</script>
+<script type="text/javascript" src="http://lloogg.com/l.js?c=21110018b652cdea">
+</script>
+</body>
+</html>

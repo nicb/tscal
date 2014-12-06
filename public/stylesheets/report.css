@@ -1,0 +1,106 @@
+/*
+ * $Id: report.css 210 2010-01-26 18:35:22Z mtisi $
+*/
+body { 
+    background-color: #fff;
+    color: #333;
+    font-family: arial, verdana, helvetica, sans-serif;
+    font-size:   11px;
+    margin:10px;
+}
+
+h1 {
+    font-size:14px;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #333;
+    text-decoration:none;
+    font-weight:bold;
+}
+a:hover {
+    text-decoration:underline;
+}
+
+.fieldWithErrors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+}
+
+#errorExplanation {
+    width: 400px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
+}
+
+#errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
+}
+
+#errorExplanation ul li {
+    font-size: 12px;
+    list-style: square;
+}
+
+/*
+ * Added by nicb
+ * Main report
+*/
+
+table {
+    border: 1px solid #999;
+}
+
+th {
+    background-color: orange;
+    font-size: 14px;
+}
+
+td, th {
+    padding: 4px;
+    border-bottom: 1px solid #999;
+    vertical-align: middle;
+    text-align: center;
+    border-right: 1px solid #999;
+}
+
+tr.odd {
+    background-color: #FFFFFF !important;
+}
+
+tr.even {
+    background-color: #CCCCCC !important;
+}
+
+td.course_acronym {
+    width: 5%;
+}
+
+.topic_name {
+  text-align: left;
+}
+
+.teacher_E, a.teacher_E {
+  color: red;
+}
+
+.teacher_typology_E {
+  color: red;
+}

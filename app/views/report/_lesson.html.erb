@@ -1,0 +1,11 @@
+<!-- $Id: _lesson.html.erb 237 2010-03-08 11:10:50Z moro $ -->
+<tr class='lesson_report <%=  cycle('even','odd') %>'>
+  <td class='lesson_report'>
+    <%=
+        auth_link_to(lesson.start_date.iwday + ' ' + lesson.start_date.strftime("%d/%m/%Y") + '  ' +
+        lesson.start_date.strftime("%H:%M") + '-' + lesson.end_date.strftime("%H:%M"),
+        url_for(:controller => :lesson, :action => :edit_lesson, :id => lesson.id))
+    %>
+  <td class='lesson_report'>(Durata: <%= lesson.duration -%> minuti)</td>
+	<td class='lesson_report'>(Sede: <% if lesson.place -%><%= lesson.place.name -%><% else -%><%= "Sconosciuta" -%><% end -%>)</td>
+</tr>

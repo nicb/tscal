@@ -1,0 +1,113 @@
+<!-- $Id: show.html.erb 210 2010-01-26 18:35:22Z mtisi $ -->
+<div id="header" style="display:none">
+  <select id='calendar_filter' name='calendar_filter'>
+    <%= option_groups_from_collection_for_select(@group_options, :group, :group_label, :option_key, :option_value, @selected_option) %>
+  </select>
+  <a href="<%=url_for(:controller => :bo, :action => :index)%>" class="button-hover ui-state-default ui-corner-left ui-no-right">Accedi</a>
+  <a href="<%=url_for(:controller => :report, :action => :index)%>" class="button-hover ui-state-default ui-no-right ui-no-left">Report</a>
+  <a href="<%=url_for(:controller => :calendar, :action => :show_html)%>" class="button-hover ui-state-default ui-corner-right uo-no-left" id="html-link">HTML</a>
+
+</div>
+<div id="calendar"></div>
+<script type='text/javascript'>
+  // <![CDATA[
+  var html_base = '<%=url_for(:controller => :calendar, :action => :show_html)%>';
+  $(document).ready(function() {
+
+    $('#footer').show();
+    $('#calendar').empty().css('width','100%').css('margin', '0 auto').fullCalendar({
+      height: $(window).height() - 40,
+      defaultView: 'agendaWeek',
+      theme: true,
+      header: {
+        left:   '',
+        center: 'title',
+        right:  'today prev,next month,agendaWeek,agendaDay'
+      },
+      titleFormat: {
+        month: 'MMMM yyyy',                             // September 2009
+        week: "d MMM{ '&#8212; 'd MMM} yyyy", // Sep 7 - 13 2009
+        day: 'dddd d MMMM yyyy'                  // Tuesday, Sep 8, 2009
+      },
+      editable: false,
+      use24Hour: true,
+      timeFormat: "HH:mm{ - HH:mm}",
+      axisFormat: "HH:mm",
+      allDaySlot: false,
+      firstHour: 8,
+      allDayDefault:false,
+      minTime: 8,
+      maxTime: 20,
+      firstDay: 1,
+      buttonText: {
+        today: "Oggi",
+        month: "Mese",
+        week: "Settimana",
+        day: "Giorno"
+      },
+      monthNamesShort: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
+      monthNames: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
+      dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'],
+      dayNames: ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'],
+      events: function(start, end, callback) {
+        $.getJSON('<%= url_for(:controller => :calendar, :action => :get_lessons_json) %>', {
+          start: Math.round(start.getTime()/1000),
+          end: Math.round(end.getTime()/1000),
+          filter: $('#calendar_filter').val()
+        }, function(result) {
+          callback(result);
+        });
+      },
+      eventRender: function(event, element) {
+        currView = $('#calendar').fullCalendar('getView');
+        if(currView.name != 'month') {
+          $(element).find('a').css('background-color',event.course_color).css('border-color', event.background_color);
+          $(element).css('border-color', event.background_color).find('.fc-event-time').empty().html("<a href=\"<%= url_for(:controller => :lesson, :action => :edit_lesson) %>/" + event.id + "\" class='week-time'>" + event.name + '</a>').css('background-color', event.background_color).find('a').css({'background-color': event.background_color, 'color': event.title_color});
+          if(event.place) {
+            $(element).find('.fc-event-title').empty().html('<div class="teacher">' + event.teacher_name + '</div><div class="place">' + event.place + '</div><div class="time">' + event.time + '</div><div class="topic">' + event.title + '</div><div class="course">' + event.course + '</div>');
+            $(element).qtip({content: event.tip + ', Luogo: ' + event.place ,position: { corner: { target: 'topMiddle', tooltip: 'bottomMiddle' }}, style: { tip: 'bottomMiddle', name: 'light'}});
+          } else {
+            $(element).find('.fc-event-title').empty().html('<div class="teacher">' + event.teacher_name + '</div><div class="time">' + event.time + '</div><div class="topic">' + event.title + '</div><div class="course">' + event.course + '</div>');
+            $(element).qtip({content: event.tip,position: { corner: { target: 'topMiddle', tooltip: 'bottomMiddle' }}, style: { tip: 'bottomMiddle', name: 'light'}});
+          }
+        } else {
+          $(element).find('a').css('background-color',event.course_color).css('border-color', event.background_color);
+          $(element).css('border-color', event.background_color).find('.fc-event-time').css('background-color', event.background_color);
+          $(element).find('.fc-event-time').css('color', event.title_color);
+          $(element).find('.fc-event-title').html(event.name);
+          if(event.place)
+            $(element).qtip({content: event.tip + ', Luogo: ' + event.place ,position: { corner: { target: 'topMiddle', tooltip: 'bottomMiddle' }}, style: { tip: 'bottomMiddle', name: 'light'}});
+          else
+            $(element).qtip({content: event.tip,position: { corner: { target: 'topMiddle', tooltip: 'bottomMiddle' }}, style: { tip: 'bottomMiddle', name: 'light'}});
+        }
+      },
+      viewDisplay: function(event,element) {
+      $('#html-link').attr('href',html_base + '/' + $.fullCalendar.formatDate($('#calendar').fullCalendar('getDate'),'dd/MM/yyyy'));
+      }
+    });
+    $('.fc-header-left').html($('#header').html());
+    $('#header').remove();
+    $(window).bind('resize', function() {
+      if($('#calendar').fullCalendar('option', 'height') != $(window).height()-40)
+        $('#calendar').fullCalendar('option', 'height', $(window).height()-40);
+    });
+    $('.button-hover').hover(
+    function(){
+      $(this).addClass("ui-state-hover");
+    },
+    function(){
+      $(this).removeClass("ui-state-hover");
+    });
+    $('#calendar_filter').change(function() {
+      $('#calendar').fullCalendar('refetchEvents');
+    });
+  });
+  // ]]>
+</script>
+<noscript>
+  <h1>Javascript non abilitato!</h1>
+  <h3><a href="<%=h url_for(:controller => :calendar, :action => :show_html) %>">Clicca qui per la versione HTML</a></h3>
+</noscript>
+<div id="footer" style="display:none">
+  <%= render(:partial => 'shared/footer', :locals => { :revision_string => controller.svn_revision } ) %>
+</div>

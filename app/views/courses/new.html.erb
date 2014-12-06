@@ -1,0 +1,15 @@
+<!--
+$Id: new.html.erb 35 2009-02-25 23:12:53Z moro $
+-->
+<h1>Nuovo Corso</h1>
+
+<% form_for(@course) do |f| %>
+  <%= f.error_messages %>
+<p>Nome del corso: <%= f.text_field :name %></p>
+<p>Durata del corso: <%= f.text_field :duration %></p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', courses_path %>

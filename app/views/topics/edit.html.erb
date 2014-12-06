@@ -1,0 +1,18 @@
+<!--
+$Id: edit.html.erb 125 2009-10-30 01:58:27Z moro $ 
+-->
+<h1>Modifica l'insegnamento di <i><%=@topic.name %></i></h1>
+
+<% form_for(@topic) do |f| %>
+  <%= f.error_messages %>
+<p>Nome: <%= f.text_field :name, :value => @topic.name %></p>
+<p>Livello: <%= f.text_field :level, :value => @topic.level %></p>
+<p>Descrizione: <%= f.text_field :description, :value => @topic.description %></p>
+<p>Acronimo: <%= f.text_field :acronym, :value => @topic.acronym %></p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @topic %> |
+<%= link_to 'Back', topics_path %>

@@ -1,0 +1,12 @@
+--- lib/extensions/datetime.rb	(revision 264)
++++ lib/extensions/datetime.rb	(working copy)
+@@ -42,7 +42,8 @@
+   end
+   
+   def blacklisted?
+-    d = BlacklistedDate.find_by_blacklisted(self) || BlacklistedDate.find_by_blacklisted(self.to_date)
++    d = BlacklistedDate.first(:conditions => ['blacklisted like ?', "#{self.to_date.to_s}%"])
++#   d = BlacklistedDate.find_by_blacklisted(self) || BlacklistedDate.find_by_blacklisted(self.to_date)
+     return d && d.valid? ? true : false
+   end
+   

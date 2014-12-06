@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# $Id$
+#
+TSCAL_HOME=${TSCAL_HOME:-/var/www/tscal}
+BACKUP_DIR=${TSCAL_HOME}/backups
+TMPDIR=${TSCAL_HOME}/tmp
+LAST_BACKUP=${BACKUP_DIR}/LAST_BACKUP
+BACKUP_NAME="TSCAL_BACKUP-$(date '+%Y%m%d%H%M%s').sqlite3.bz2"
+BACKUP_TEMP_NAME="${TMPDIR}/${BACKUP_NAME}.temp"
+DB=${TSCAL_HOME}/db/production.sqlite3
+COMPRESS="bzip2 -9"
+SQLITEDUMP=cat
+
+($SQLITEDUMP $DB | $COMPRESS > $BACKUP_TEMP_NAME) || exit -1 
+if cmp -s $LAST_BACKUP $BACKUP_TEMP_NAME
+then
+	rm $BACKUP_TEMP_NAME
+else
+	rm -f $LAST_BACKUP
+	mv $BACKUP_TEMP_NAME ${BACKUP_DIR}/$BACKUP_NAME
+	ln -s ${BACKUP_DIR}/$BACKUP_NAME $LAST_BACKUP
+fi
+
+exit 0

@@ -1,0 +1,15 @@
+#
+# $Id: TODO 44 2009-03-18 22:08:19Z moro $
+#
+20090317:
+
+- implement TopicTeacher record/class
+- change activated_topic model => has_many :topic_teachers
+                                  has_many :teachers, :through => :topic_teachers
+- implement teacher display on index page
+- implement student display on index page
+- implement places/classrooms
+- have working Ajax.Request for selections
+
+- !!reflect over ActivatedTopic: it hase a field called Course_starting_year that makes a link between the course and the topic...but this method implies that an activated topic may be proper of only one course a time...imagine you want to *activate* the same topic for another course...you cannot...the only thing you can do is to activate it another time; but doing so you'll have two activated_topics equals one to each other except for the field "course_starting_year_id"...
+and this breaks the golden rule: "NEVER DUPLICATE DATA"..

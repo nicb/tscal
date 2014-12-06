@@ -1,0 +1,20 @@
+<!--
+$Id: _expand_new_course.html.erb 296 2012-09-05 13:20:37Z nicb $
+-->
+<% remote_form_for(:bo, :update => 'course', :url => { :action => :close_new_course }) do |f| -%>
+				<p>Nome del corso: <%= f.text_field :name %><br />
+					Acronimo: <%= f.text_field :acronym, { :size => 21 } %><br />
+					Durata del corso: <%= f.text_field :duration, { :size => 16 } %></p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+  <% Course.selection.each do |c| %>
+  <li>
+    <%= link_to(c[0], url_for(:action => :index, :id => c[1])) %>
+  </li>
+  <% end %>
+  </ul>
+  </p>
+</div>

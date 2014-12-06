@@ -1,0 +1,2 @@
+module ActivatedTopicsHelper
+end

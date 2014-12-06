@@ -1,0 +1,19 @@
+#!/bin/bash
+rake db:drop:all
+rake db:create:all
+rake db:migrate
+rake db:test:clone_structure
+rake db:fixtures:load
+cat tmp/generate_lesson_list.rb | ruby script/console
+echo "
+That's what I've done:
+rake db:drop:all
+rake db:create:all
+rake db:migrate
+rake db:test:clone_structure
+rake db:fixtures:load
+cat tmp/generate_lesson_list.rb | ruby script/console
+
+Now *YOU MUST* restart the server
+cheers"
+

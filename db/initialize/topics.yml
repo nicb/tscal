@@ -1,0 +1,61 @@
+#
+# $Id: topics.yml 137 2009-11-02 17:34:52Z moro $
+#
+
+elettroacustica_1:
+  name: "Elettroacustica"
+  acronym: "EA"
+  level: 1
+  color: "#00FF00"
+
+elettroacustica_2:
+  name: "Elettroacustica - Tecniche di Ripresa Microfonica"
+  acronym: "EA"
+  level: 2
+  color: "#00FF00"
+
+elettroacustica_3:
+  name: "Elettroacustica"
+  acronym: "EA"
+  level: 3
+  color: "#00FF00"
+
+<% 1.upto(6) do |l| %>
+tar_<%= l.to_s %>:
+  name: "Tecniche Applicate di Registrazione"
+  acronym: "TAR"
+  level: <%= l.to_s %>
+  color: "#00F00F"
+<% end %>
+
+<% 1.upto(6) do |l| %>
+taensm_<%= l.to_s %>:
+  name: "Tecniche Applicate di Elaborazione Numerica del Segnale Musicale"
+  acronym: "TAENSM"
+  level: <%= l.to_s %>
+  color: "#0F000F"
+<% end %>
+
+<% 5.upto(6) do |l| %>
+esercitazioni_<%= l.to_s %>:
+  name: "Esercitazioni"
+  acronym: "ES"
+  level: <%= l.to_s %>
+  color: "#0F000F"
+<% end %>
+
+<% 5.upto(6) do |l| %>
+lab_<%= l.to_s %>:
+  name: "Laboratorio"
+  acronym: "LAB"
+  level: <%= l.to_s %>
+  color: "#0F000F"
+<% end %>
+
+<% 1.upto(3) do |l| %>
+arte_<%= l.to_s %>:
+  name: "Storia dell'Arte Moderna e Contemporanea e Arti Multimediali"
+  acronym: "ARTE"
+  level: <%= l.to_s %>
+  color: "#0F000F"
+<% end %>

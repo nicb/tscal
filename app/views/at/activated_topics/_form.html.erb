@@ -1,0 +1,33 @@
+<!--
+$Id: _form.html.erb 292 2012-08-23 16:26:37Z nicb $
+-->
+<%= form.error_messages %>
+<p>Nome dell'insegnamento: <%= form.select :topic_id, Topic.selection, :selected => (activated_topic.topic ? activated_topic.topic.id : nil), :include_blank => 'Seleziona' %></p>
+<p>oppure</p>
+<p><%=link_to 'Crea nuovo insegnamento', new_topic_url %></p>
+<p>Corsi per i quali si attiva l'insegnamento:</p>
+<table>
+<% CourseStartingYear.running_years.each do |csy| %>
+  <tr>
+    <td>
+      <% ctr = activated_topic.relation(csy) %>
+    </td>
+    <td>
+      <%= check_box_tag("activated_topic[course_starting_years][#{csy.id}][status]", '1', activated_topic.is_linked_to?(csy)) -%>&nbsp;<%= csy.full_course_name -%>&nbsp;
+    </td>
+    <td>
+      <%= select(nil, "activated_topic[course_starting_years][#{csy.id}][teaching_typology]", CourseTopicRelation.teaching_typology_selector, :selected => activated_topic.selected_teaching_typology(ctr)) -%>&nbsp;
+    </td>
+    <% CourseTopicRelation::MANDATORY_FLAG.each do |mf, desc| %>
+      <td>
+        <%= radio_button_tag("activated_topic[course_starting_years][#{csy.id}][mandatory_flag]", mf.to_s, activated_topic.selected_mandatory_flag(mf, ctr)) -%>&nbsp;<%= desc -%>&nbsp;
+      </td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<p>Somministrazione: <%= form.select :delivery_type, ActivatedTopic.delivery_type_selector %></p>
+<p>Docente: <%= form.select :teacher_id, Teacher.find(:all).map {|t| [ t.full_name, t.id]}, :selected => (activated_topic.teacher ? activated_topic.teacher.id : nil), :include_blank => true %></p>
+<p>Semestre di partenza: <%= form.select :semester_start, [ [ 'Primo', 1 ], ['Secondo', 2 ] ], :selected => activated_topic.semester_start %></p>
+<p>Durata del corso: <%= form.text_field :duration, :value => activated_topic.duration -%> in ore</p>
+<p>Crediti: <%= form.text_field :credits, :value => activated_topic.credits %></p>

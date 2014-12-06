@@ -1,0 +1,93 @@
+<!--
+$Id: index.html.erb 261 2010-08-31 16:18:12Z nicb $
+-->
+<div id="top">
+  <% if @course %>
+    Corso: <i><%= link_to(@course.name, url_for(:action => :index, :id => @course.id)) -%></i>
+    <% if @year -%> anno: <i><%= @year %></i><% end %>
+  <% end %>
+</div>
+<div id="folder" style="text-align:right">
+  | <%= link_to("Calendario", url_for(:controller => :calendar, :action => :show_js)) %> | <%= link_to("Report", url_for(:controller => :report, :action => :index)) %> | <%= link_to('Docenti', url_for(:controller => :teachers, :action => :index)) -%> | <%= link_to('Esci', url_for(:controller => :account, :action => :logout)) -%>&nbsp;&nbsp;
+</div>
+<div id="rowspace1">
+</div>
+<div id="courseadd">
+  Elenco dei corsi attivati
+</div>
+<div id="topicadd">
+  Elenco degli insegnamenti attivati - - - attiva nuovo insegnamento
+</div>
+<div id="course">
+    <%= link_to_remote("Aggiungi un nuovo corso", :update => 'course', :url => { :action => :expand_new_course }) %>
+  <p>
+  <ul>
+  <%# 
+    select(:course, :select, Course.selection,{},
+	  { :onchange => "new Ajax.Request('/bo/show_years/' + this[this.selectedIndex].value, { asynchronous: true, evalScripts: true }); return false;"}) 
+  %>
+  <% Course.selection.each do |c| %>
+  <li>
+    <%= link_to(c[0], url_for(:action => :index, :id => c[1])) %>
+  </li>
+  <% end %>
+  </ul>
+  </p>
+</div>
+<div id="columnspace">
+</div>
+<div id="topic">
+	<div id="at">&nbsp;
+	<% if @year %>
+		<%= link_to_remote("Attiva un nuovo insegnamento", :update => 'at', :url => { :action => :expand_new_topic, :id => @course.id, :sy => @year }) %>
+	<% end %>
+	</div>
+  <% if @activated_topics %>
+	  <ul>
+	  <% @activated_topics.each do |t| %>
+	    <li class="activated_topic_item" id="t_<%=t.id -%>">
+	      <%= render(:partial => 'close_activated_topic', :object => t) %>
+	    </li>
+	  <% end %>
+	  </ul>
+  <% end %>
+</div>
+<div id="rowspace2">
+</div>
+<div id="year">
+  Elenco degli anni attivati<br />
+  <p>
+  <% if @course %>
+    <%= @course.name %>
+    <%= link_to_remote("Attiva", :update => 'year', :url => { :action => :expand_new_year, :id => @course.id }) %>
+    <ul>
+    <% @course.course_starting_years.each do |csy| %>
+      <li>
+      <%= link_to(csy.starting_year, url_for(:action => :index, :id => csy.course_id, :year => csy.starting_year)) %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+  </p>
+</div>
+<div class="columnspace">
+</div>
+<div id="teacher">
+  <% if @teachers %>
+    <h1>Docenti</h1>
+    <ul>
+    <% @teachers.uniq.each do |t| %>
+      <li class="teacher_item" id="t_<%=t.id -%>">
+	<%= render(:partial => 'close_teacher', :object => t) %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+<div class="columnspace">
+</div>
+<div id="student">
+  <h1>ecco gli studenti</h1>
+  anno 1<br />
+  anno 2<br />
+</div>

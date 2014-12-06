@@ -1,0 +1,4 @@
+<!--
+$Id: close_teacher.html.erb 49 2009-03-23 23:22:06Z moro $
+-->
+<%= link_to_remote(close_teacher.full_name, :update => "t_" + close_teacher.id.to_s, :url => {:action => :expand_teacher, :id => close_teacher.id}) %>

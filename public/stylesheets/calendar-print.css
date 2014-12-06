@@ -1,0 +1,18 @@
+#header {
+    display:none;
+}
+
+.cell_empty, .cell_empty_today {
+    margin-bottom:1px;
+    margin-top:1px;
+}
+
+.cell_lesson {
+    padding-bottom:2px;
+    margin-top:1px;
+}
+
+.event_group, .event_group_inner_column {
+    margin-bottom:1px;
+    margin-top:1px;
+}

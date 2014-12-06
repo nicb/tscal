@@ -1,0 +1,15 @@
+#
+# $Id: backup.crontab 185 2009-11-19 02:55:11Z nicb $
+#
+# This is to be appended to www-data user's crontab like this:
+#
+# sudo -u www-data crontab -e
+# <append this file to whatever is already there>
+# <close the editor>
+# 
+TSCAL_HOME=/var/www/tscal
+#
+# tscal backup - do a backup every day every 4 hours at minute 7
+# a real backup is done only if there's a change in the database
+#
+7 0-23/4 * * * $TSCAL_HOME/script/tscal/backup.sh

@@ -1,0 +1,83 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+#
+# $Id: course_topic_relations.yml 291 2012-08-04 21:36:00Z nicb $
+#
+# TODO: missing fixtures: many-to-many relationships for activated topics and
+# csys, to make sure that all functional tests still pass with them
+#
+i1_tds_y_one:
+  activated_topic: informatica_year_one
+  course_starting_year: tds_one
+  teaching_typology: 'C'
+  mandatory_flag: true
+  course_year: 1
+
+i2_tds_y_two:
+  activated_topic: informatica_year_two
+  course_starting_year: tds_two
+  teaching_typology: 'C'
+  mandatory_flag: false
+  course_year: 2
+
+i3_tds_y_three:
+  activated_topic: informatica_year_three
+  course_starting_year: tds_three
+  teaching_typology: 'C'
+  mandatory_flag: true
+  course_year: 3
+
+i1_tds_y_last_year:
+  activated_topic: informatica_year_one
+  course_starting_year: tds_two
+  teaching_typology: 'C'
+  mandatory_flag: true
+  course_year: 1
+
+i1_tds_y_year_before_last_year:
+  activated_topic: informatica_year_one
+  course_starting_year: tds_three
+  teaching_typology: 'C'
+  mandatory_flag: true
+  course_year: 1
+
+i1_tds_y_old:
+  activated_topic: informatica_year_one
+  course_starting_year: tds_old
+  teaching_typology: 'C'
+  mandatory_flag: true
+  course_year: 1
+
+ln_tds_y_one:
+  activated_topic: long_name_year_one
+  course_starting_year: tds_one
+  teaching_typology: 'A'
+  mandatory_flag: false
+  course_year: 1
+
+old_tds_course:
+  activated_topic: an_old_course
+  course_starting_year: tds_old
+  teaching_typology: 'A'
+  mandatory_flag: true
+  course_year: 1
+
+pf_bd_y_one:
+  activated_topic: pianoforte_year_one
+  course_starting_year: bd_one
+  teaching_typology: 'C'
+  mandatory_flag: false
+  course_year: 1
+
+pf_tds_y_one:
+  activated_topic: pianoforte_year_one
+  course_starting_year: tds_one
+  teaching_typology: 'CPi'
+  mandatory_flag: true
+  course_year: 1
+
+i1_tds_y_oldiximus:
+  activated_topic: informatica_year_one
+  course_starting_year: tds_oldiximus
+  teaching_typology: 'C'
+  mandatory_flag: true
+  course_year: 1

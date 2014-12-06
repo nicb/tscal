@@ -1,0 +1,21 @@
+<!-- $Id: lessons.html.erb 236 2010-03-04 15:13:12Z mtisi $ -->
+<h1>
+  <%= @at.topic.display_tooltip -%>
+  &nbsp;
+  <%= link_to_function("Indietro", 'history.back(); return false;') -%>
+  &nbsp;
+  <%= link_to('Torna al Calendario', url_for(:controller => :calendar, :action => :show_js)) -%>
+</h1>
+<table>
+  <tr>
+    <th>Docente:</th><th class='lesson_teacher_name'><%= @at.teacher.full_name -%></th>
+  </tr>
+  <tr>
+    <th>Lezioni:</th>
+    <td>
+      <table>
+        <%= render(:partial => 'lesson', :collection => @at.lessons) -%>
+      </table>
+    </td>
+  </tr>
+</table>

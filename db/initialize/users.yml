@@ -1,0 +1,66 @@
+#
+# $Id: users.yml 155 2009-11-08 02:31:51Z moro $
+#
+
+nicb:
+  login: nicb
+  first_name: "Nicola"
+  last_name: "Bernardini"
+  email: "nicb@sme-ccppd.org"
+  url: "http://www.nicolabernardini.info"
+  password: '77da8956bcb0afb00c50a9fd7b6d87cc814ae5a9'
+  type: Teacher
+
+moro:
+  login: moro
+  first_name: "Francesco"
+  last_name: "Morosinotto"
+  email: "moro@sme-ccppd.org"
+  url: "http://people.sme-ccppd.org/~moro/"
+  password: '1cd72b866a3d1e8b1eddd44ff00784b98b6cae3a'
+  type: Admin
+
+costa:
+  login: costa
+  first_name: "Matteo"
+  last_name: "Costa"
+  email: "info@ingcosta.it"
+  url: "http://www.ingcosta.it/"
+  password: 'b543c359a24a0431af2635bd4a943fab8afe13e0' #matteocosta
+  type: Teacher
+
+neve:
+  login: neve
+  first_name: "Giovanna"
+  last_name: "Neve"
+  email: "giovanna.neve@gmail.com"
+  url: "http://www.giovannaneve.it"
+  password: '32b122d9dc57ba35fb9affb9370e4dbb592fb699' #giovannaneve
+  type: Teacher
+
+possamai:
+  login: possamai
+  first_name: "Alessandra"
+  last_name: "Possamai"
+  email: "alessandrapossamai@libero.it"
+  url: "http://www.alessandrapossamai.it"
+  password: 'b206397bef99dbf00122adb62d9280d04a00b707' #alessandrapossamai
+  type: Teacher
+
+fortunato:
+  login: fortunato
+  first_name: "Federica"
+  last_name: "Fortunato"
+  email: "fortunatofederica@yahoo.it"
+  url: ""
+  password: '4d838e60802978a315d09f559674a23436033b32' #federicafortunato
+  type: Teacher
+
+lanza:
+  login: lanza
+  first_name: "Stefano"
+  last_name: "Lanza"
+  email: "non_disponibile@conservatoriopollini.it"
+  url: ""
+  password: '9e93090a8ecd11003f9d96d88871a82a4d9d21d9' #stefanolanza
+  type: Teacher

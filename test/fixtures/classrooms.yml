@@ -1,0 +1,11 @@
+#
+# $Id: classrooms.yml 52 2009-03-25 19:13:16Z moro $
+#
+
+class_one:
+  name: aula 4
+  place: place_two
+
+class_two:
+  name: auditorium
+  place: place_one

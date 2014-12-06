@@ -1,0 +1,22 @@
+<!--
+$Id: _expand_new_year.html.erb 297 2012-11-02 21:34:54Z nicb $
+-->
+<% @course = Course.find_by_id(params[:id]) %>
+Elenco degli anni attivati<br />
+  <p>
+<% remote_form_for(:bo, :update => 'year', :url => { :action => :close_new_year, :id => @course.id }) do |f| -%>
+				<p>Attiva il corso</p><br />
+  <i><%= @course.name %></i><br />
+	per l'anno <%= y = Time.now.year - 5; f.select(:year, y.upto(y+15).to_a, :selected => y + 5) %>
+  <p>
+    <%= f.submit "Attiva" %>
+  </p>
+<% end %>
+  <ul>
+  <% @course.course_starting_years.each do |csy| %>
+    <li>
+    <%= link_to(csy.starting_year, url_for(:action => :index, :id => csy.course_id, :year => csy.starting_year)) %>
+    </li>
+  <% end %>
+  </ul>
+  </p>

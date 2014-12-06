@@ -1,0 +1,26 @@
+<!-- $Id: index.html.erb 294 2012-09-02 04:58:25Z nicb $ -->
+<div id='index_container'>
+  <center>
+    <table>
+      <thead>
+        <tr>
+          <th class='course_acronym'><%= select(:course, :acronym, @course_selector, { :selected => @course_selected }, { :onchange => "window.location.href = '/report/' + this[this.selectedIndex].value + '/show_filtered_by_course';" }) -%></th>
+          <th class='teaching_typology'><%= select(:course, :teaching_typology, @teaching_typology_selector, { :selected => @teaching_typology_selected }, { :onchange => "window.location.href = '/report/' + this[this.selectedIndex].value + '/show_filtered_by_teaching_typology';" }) -%></th>
+          <th class='topic_name'>Insegnamenti&nbsp;&nbsp;<%= link_to('<i>(torna al calendario...)</i>', url_for(:controller => :calendar, :action => :show_js)) -%></th>
+					<th class='delivery_type'><%= select(:course, :delivery_type, @delivery_type_selector, { :selected => @delivery_type_selected }, { :onchange => "window.location.href = '/report/' + this[this.selectedIndex].value + '/show_filtered_by_delivery_type';", :style => 'width: 45px;' }) -%></th>
+          <th class='activity_report'><%= select(:course, :activation, @activation_selector, { :selected => @activation_selected }, { :onchange => "window.location.href = '/report/' + this[this.selectedIndex].value + '/show_filtered_by_activation';" }) -%></th>
+          <th class='duration'>Ore</th>
+          <th class='credits'>Cfa</th>
+          <th class='year'><%= select(:course, :year, @year_selector, { :selected => @year_selected }, { :onchange => "window.location.href = '/report/' + this[this.selectedIndex].value + '/show_filtered_by_year';" }) -%></th>
+          <th class='semesters' colspan='2'><%= select(:course, :semester, @semester_selector, { :selected => @semester_selected }, { :onchange => "window.location.href = '/report/' + this[this.selectedIndex].value + '/show_filtered_by_semester';" }) -%></th>
+          <th class='teacher_I'><%= select(:course, :teacher, @teacher_selector, { :selected => @teacher_selected }, { :onchange => "window.location.href = '/report/' + this[this.selectedIndex].value + '/show_filtered_by_teacher';" }) -%></th>
+          <th class='teacher_typology_I'><%= select(:course, :teacher_typology, @teacher_typology_selector, { :selected => @teacher_typology_selected }, { :onchange => "window.location.href = '/report/' + this[this.selectedIndex].value + '/show_filtered_by_teacher_typology';" }) -%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% rowCount = 0 %>
+        <%= render(:partial => 'index_item', :collection => @activated_topics) %>
+      </tbody>
+    </table>
+  </center>
+</div>

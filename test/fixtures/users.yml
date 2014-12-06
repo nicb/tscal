@@ -1,0 +1,48 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+#longbob:
+#  first_name: Robert
+#  last_name: Long
+#  login: longbob
+#  password: 8e9b1a9a38e66ca572a5e8fdac8e256848842dfa  longtest
+#  type: Admin
+#  email: nobody@nowhere.com
+
+nicb:
+  login: nicb
+  first_name: "Nicola"
+  last_name: "Bernardini"
+  email: "nicb@sme-ccppd.org"
+  url: "http://www.nicolabernardini.info"
+  password: 9a91e1d8d95b6315991a88121bb0aa9f03ba0dfc  #test
+  type: Teacher
+  teacher_typology: 'I'
+
+moro:
+  login: moro
+  first_name: "Francesco"
+  last_name: "Morosinotto"
+  email: "moro@sme-ccppd.org"
+  url: "http://people.sme-ccppd.org/~moro/"
+  password: 9a91e1d8d95b6315991a88121bb0aa9f03ba0dfc  #test
+  type: Admin
+
+costa:
+  login: costa
+  first_name: "Matteo"
+  last_name: "Costa"
+  email: "info@ingcosta.it"
+  url: "http://www.ingcosta.it/"
+  password: b543c359a24a0431af2635bd4a943fab8afe13e0 #matteocosta
+  type: Teacher
+  teacher_typology: 'E'
+
+neve:
+  login: neve
+  first_name: "Giovanna"
+  last_name: "Neve"
+  email: "giovanna.neve@gmail.com"
+  url: "http://www.giovannaneve.it/"
+  password: 9a91e1d8d95b6315991a88121bb0aa9f03ba0dfc #test
+  type: Teacher
+  teacher_typology: 'E'

@@ -1,0 +1,4 @@
+<!--
+$Id: close_activated_topic.html.erb 49 2009-03-23 23:22:06Z moro $
+-->
+<%= link_to_remote(close_activated_topic.topic_and_level, :update => "t_" + close_activated_topic.id.to_s, :url => {:action => :expand_activated_topic, :id => close_activated_topic.id}) %>

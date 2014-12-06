@@ -1,0 +1,13 @@
+<!--
+$Id: _close_new_topic.html.erb 258 2010-08-29 20:23:50Z nicb $
+-->
+<div id="at">
+  <%= link_to_remote("Attiva un nuovo corso", :update => 'course', :url => { :action => :expand_new_topic, :id => course_id }) %></div>
+  <ul>
+  <% close_new_topic.each do |t| %>
+    <li class="activated_topic_item" id="t_<%=t.id -%>">
+      <%= render(:partial => 'close_activated_topic', :object => t) %>
+    </li>
+  <% end %>
+  </ul>
+</div>

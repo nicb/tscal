@@ -1,0 +1,13 @@
+<!-- $Id: _expand_activated_topic.html.erb 212 2010-01-29 06:13:04Z nicb $ -->
+<%= link_to_remote(expand_activated_topic.topic_and_level, :update => "t_" + expand_activated_topic.id.to_s, :url => {:action => :close_activated_topic, :id => expand_activated_topic.id}) %>
+<ul>
+<li>Corsi associati: <i><%= expand_activated_topic.all_full_courses %></i></li>
+<li>Nome del docente: <i><%= expand_activated_topic.teacher.full_name %></i></li>
+<li>Durata: <i><%= expand_activated_topic.duration %> ore</i></li>
+<li>Crediti: <i><%= expand_activated_topic.credits %></i></li>
+<li>Semestre di partenza: <i><%= expand_activated_topic.semester_start %></i></li>
+<li>Tipologie dell'insegnamento: <i><%= expand_activated_topic.all_full_teaching_typologies %></i></li>
+<li>Somministrazione: <i><%= expand_activated_topic.delivery_type_extended %></i></li>
+</ul>
+<i><%= link_to(expand_activated_topic.edit_or_create_name, eval(expand_activated_topic.edit_or_create_method), :method => expand_activated_topic.edit_or_create_http_method) %></i>
+<%= link_to_remote('Elimina le lezioni', :update => 'topic', :url => {:action => 'delete_lessons', :id => expand_activated_topic.id}, :confirm => "Stai per eliminare tutte le lezioni del corso #{expand_activated_topic.topic.display_tooltip}.\nDesideri continuare?") %>

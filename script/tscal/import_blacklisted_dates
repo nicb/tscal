@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+#
+# $Id: import_blacklisted_dates 269 2011-03-03 17:20:26Z nicb $
+#
+ENV['RAILS_ENV'] ||= 'production' # this usually works on production enviroments
+require File.dirname(__FILE__) + '/../../config/boot'
+require File.dirname(__FILE__) + '/../../config/environment'
+require 'import/blacklisted_dates'
+
+unless ARGV.size == 1
+  $stderr.puts("Usage: #{$0} <academic year>\n\t<academic year> must be in format yyyy-yyyy")
+  exit(-1)
+end
+
+p = Import::BlacklistedDates::Parser.new(ARGV[0])
+results = p.parse
+c = Import::BlacklistedDates::Creator.new(results)
+c.create
+
+exit(0)

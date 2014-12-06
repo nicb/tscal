@@ -1,0 +1,2 @@
+module BoHelper
+end

@@ -1,0 +1,13 @@
+#
+# $Id: courses.yml 134 2009-11-02 03:21:35Z nicb $
+#
+
+tds:
+   name: "Tecnico di Sala di Registrazione"
+   acronym: "TDS"
+   duration: 3
+
+bd:
+   name: "Biennio di Didattica"
+   acronym: "BD"
+   duration: 2

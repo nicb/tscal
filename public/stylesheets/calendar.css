@@ -1,0 +1,190 @@
+h1 {
+    font-size:x-large;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+h2 {
+    font-size:large;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+h3 {
+    font-size:normal;
+    font-weight:bold;
+    margin-bottom:4px;
+}
+
+a {
+    color: #333;
+    text-decoration:none;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+body {
+    margin:5px;
+    background-color: #fff;
+    color: #333;
+    font-family: arial, verdana, helvetica, sans-serif;
+    font-size:   11px;
+    height: 100%;
+}
+
+#header {
+    height: 5%;
+    width: 100%;
+    margin-top:    12px;
+    margin-bottom: 10px;
+    font-family: arial, verdana, helvetica, sans-serif;
+    font-size:   11px;
+
+}
+
+#calendar {
+    height: 100%;
+    width: 100%;
+}
+
+#calendar_header {
+    height: 4%;
+    width: 100%;
+}
+
+#calendar_body {
+    height: 94%;
+    width: 100%;
+}
+
+#calendar_filter {
+    width: 150px;
+}
+.column {
+    width: 15.8%;
+    float: left;
+    overflow: hidden;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+.column_header {
+    width: 15.8%;
+    height: 20px;
+    float: left;
+    overflow: hidden;
+    border-right: 1px solid #999;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    text-align: center;
+    font-size:16px;
+    vertical-align:middle;
+}
+
+.column_header.first {
+    border-left: 1px solid #999;
+}
+
+.column_hours {
+    width: 4.5%;
+    height: auto;
+    float: left;
+    overflow: hidden;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+}
+
+#column_header_hours {
+    width: 4.5%;
+    height:20px;
+    float: left;
+    overflow: hidden;
+    border-left: 1px solid #999;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+.event_group, .event_group_inner_column {
+    height: 100%;
+    float: left;
+}
+
+.cell_time {
+    width: 100%;
+    border-bottom: 1px solid #999;
+    border-top:1px solid #FFF;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.cell_empty {
+    background-image: url("/images/empty_cell_background-16px.png");
+}
+
+.cell_empty_today {
+    background-image: url("/images/empty_cell_background_today-16px.png");
+}
+
+.cell_empty, .cell_empty_today {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-repeat: repeat;
+    float: left;
+}
+
+.cell_lesson {
+    width: 100%;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    overflow: hidden;
+}
+
+.lesson_title {
+    text-align: center;
+    font-weight:bold;
+}
+
+.lesson_title a {
+    text-decoration:none;
+}
+
+.lesson_title a:hover {
+    text-decoration:underline;
+}
+
+.lesson_list {
+    padding:0;
+    padding-left:4px;
+    padding-top:4px;
+}
+
+.lesson_list .topic, .lesson_list .course, .fc-event .topic, .fc-event .course {
+    font-style:italic;
+}
+
+.lesson_list .teacher, .fc-event .teacher {
+    font-weight:bold;
+}
+
+.fc-event .place {
+    font-style:italic;
+}
+
+.fc-event-time .week-time {
+    font-size: 1em;
+    font-weight:bold;
+}
+
+/* Added by moro; footer for the js calendar */
+
+#footer {
+    background-color: #E6E6E6;
+    border-left:1px solid #AAAAAA;
+    border-right:1px solid #AAAAAA;
+    border-bottom:1px solid #AAAAAA;
+    text-align: center;
+    vertical-align:middle;
+    height: 20px;
+    padding: 4px;
+}

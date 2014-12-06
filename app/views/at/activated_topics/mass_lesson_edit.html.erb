@@ -1,0 +1,15 @@
+<!-- $Id: mass_lesson_edit.html.erb 192 2009-12-14 22:49:48Z nicb $ -->
+<h1>Lezioni di <i><%= @at.name %></i></h1>
+<% form_tag(mass_lesson_edit_manage_at_activated_topic_path(@at), :method => :put) do %>
+	<% @lessons.each_with_index do |l, i| %>
+
+	  <%= render(:partial => 'at/lessons/lesson', :object => l, :locals => { :div_index => i }) %>
+
+	<% end %>
+
+  <%= submit_tag("Aggiungi un'altra lezione", { :id => 'add_a_new_lesson' }) %>
+
+  <%= submit_tag('Verifica') %>
+  <%= submit_tag('Fine') %>
+  <%= button_to_function("Indietro", 'window.back(); return false;') %>
+<% end %>

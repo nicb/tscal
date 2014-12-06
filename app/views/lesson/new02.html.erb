@@ -1,0 +1,15 @@
+<!-- $Id: new02.html.erb 192 2009-12-14 22:49:48Z nicb $ -->
+<h1>Lezioni di <i><%= @at.name %></i></h1>
+<% form_tag(url_for(:action => :almost_new03, :id => @at.id)) do %>
+	<% @lessons.each_with_index do |l, i| %>
+
+	<%= render(:partial => 'new_lesson', :object => l, :locals => { :index => i }) %>
+
+	<% end %>
+
+<div id="<%= @lessons.size + 1 %>">
+<p><%= link_to_remote("Aggiungi un'altra lezione", :update => "#{@lessons.size + 1}", :url => { :action => :add_lesson, :at => @at.id, :index => (@lessons.size + 1)}) %></p>
+</div>
+
+<%= submit_tag("Verifica") %><%= submit_tag("Fine") %><%= button_to_function("Indietro", 'window.back(); return false;') %>
+<% end %>

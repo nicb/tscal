@@ -1,0 +1,56 @@
+#
+# $Id: blacklisted_dates.yml 134 2009-11-02 03:21:35Z nicb $
+#
+Ponte_Immacolata:
+  blacklisted: <%= Time.zone.local(2009, 12, 7).to_date.to_s %>
+  description: "Ponte dell'Immacolata"
+
+Dec_8_2009:
+  blacklisted: <%= Time.zone.local(2009, 12, 8).to_date.to_s %>
+  description: 'Immacolata Concezione'
+
+<% s = Time.zone.local(2009, 12, 23);  0.upto(14).each do |delta| %>
+blacklisted_<%= (s + delta.days).to_i %>:
+  blacklisted: <%= (s + delta.days).to_date.to_s %>
+  description: "Vacanze Natalizie"
+<% end %>
+
+<% s = Time.zone.local(2010, 04, 01);  0.upto(5).each do |delta| %>
+blacklisted_<%= (s + delta.days).to_i %>:
+  blacklisted: <%= (s + delta.days).to_date.to_s %>
+  description: "Vacanze Pasquali"
+<% end %>
+
+Liberazione:
+  blacklisted: <%= Time.zone.local(2010, 4, 25) %>
+  description: 'Festa della Liberazione'
+
+Lavoro:
+  blacklisted: <%= Time.zone.local(2010, 5, 1) %>
+  description: 'Festa del Lavoro'
+
+Repubblica:
+  blacklisted: <%= Time.zone.local(2010, 6, 2) %>
+  description: 'Festa della Repubblica'
+
+Santo Patrono:
+  blacklisted: <%= Time.zone.local(2010, 6, 13) %>
+  description: 'Festa del Santo Patrono'
+
+<% s = Time.zone.local(2010, 02, 22);  0.upto(8).each do |delta| %>
+blacklisted_<%= (s + delta.days).to_i %>:
+  blacklisted: <%= (s + delta.days).to_date.to_s %>
+  description: "Sessione Invernale d'Esami"
+<% end %>
+
+<% s = Time.zone.local(2010, 06, 14);  0.upto(26).each do |delta| %>
+blacklisted_<%= (s + delta.days).to_i %>:
+  blacklisted: <%= (s + delta.days).to_date.to_s %>
+  description: "Sessione Estiva d'Esami"
+<% end %>
+
+<% s = Time.zone.local(2010, 9, 1);  0.upto(29).each do |delta| %>
+blacklisted_<%= (s + delta.days).to_i %>:
+  blacklisted: <%= (s + delta.days).to_date.to_s %>
+  description: "Sessione Autunnale d'Esami"
+<% end %>

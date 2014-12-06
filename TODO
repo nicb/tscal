@@ -1,0 +1,24 @@
+
+* fare il selettore di filtraggio per il calendario, più o meno così:
+
+  tutto
+  ----------
+  tds 2006
+  tds 2007
+  ....
+  ----------
+  x activated topic
+  ----------
+  x docente
+ 
+  si accoppiano le scritte con gli id
+
+* fix gli EventGroup in modo che si allineino correttamnte
+
+* visione alternativa degli event groups quando sono più di due
+
+* mettere i before_filter sui controller sensibili per filtrare i login
+  i filtri devono autenticare l'utente in base alla sessione e al livello
+  per il momento passano solo gli amministratori
+
+- import/export di ICS

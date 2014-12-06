@@ -1,0 +1,31 @@
+<!--
+$Id: edit.html.erb 237 2010-03-08 11:10:50Z moro $
+-->
+
+<h1>Modifica la Sede - <i><%= @place.name %></i></h1>
+
+<% form_for(@place) do |f| %>
+  <%= f.error_messages %>
+<table>
+<tr>
+<td>Nome della sede:</td><td><%= f.text_field :name, :value => @place.name %></td>
+</tr>
+<tr>
+<td>Via:</td><td><%= f.text_field :street, :value => @place.street %></p>
+</tr>
+<tr>
+<td>Numero civico:</td><td><%= f.text_field :number, :value => @place.number %></p>
+</tr>
+<tr>
+<td>Città:</td><td><%= f.text_field :city, :value => @place.city %></p>
+</tr>
+<tr>
+<td>Indirizzo mappa:</td><td><%= f.text_field :url, :value => @place.url %></p>
+</tr>
+</table>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+<%= link_to 'Show', @place %> |
+<%= link_to 'Back', places_path %>

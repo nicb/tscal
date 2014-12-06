@@ -1,0 +1,41 @@
+<!-- $Id: _index_item.html.erb 212 2010-01-29 06:13:04Z nicb $ -->
+<tr class='main_report_row'>
+	<td class='course_acronym'>
+	  <%= index_item.all_courses %>
+	</td>
+	<td class='teaching_typology'>
+	  <%= index_item.all_teaching_typologies %>
+	</td>
+	<td class='topic_name'>
+    <%=
+      link_to(index_item.topic.name + ' ' + index_item.topic.level.to_s, lessons_report_url(index_item.id))
+    %>
+	</td>
+	<td class='delivery_type' nowrap="nowrap">
+	  <%= index_item.all_delivery_types %>
+	</td>
+	<td class='activity_report'>
+	  <%= index_item.activity_report %>
+	</td>
+	<td class='duration'>
+	  <%= index_item.duration %>
+	</td>
+	<td class='credits'>
+	  <%= index_item.credits %>
+	</td>
+	<td class='year'>
+	  <%= index_item.all_roman_years %>
+	</td>
+	<td class='first_semester'>
+	  <%= index_item.first_semester %>
+	</td>
+	<td class='second_semester'>
+	  <%= index_item.second_semester %>
+	</td>
+  <td class='teacher_<%= index_item.teacher.teacher_typology -%>'>
+    <%= link_to(index_item.teacher.full_name, teacher_report_url(index_item.teacher.id), { :class => "teacher_#{index_item.teacher.teacher_typology}"  }) %>
+  </td>
+  <td class='teacher_typology_<%= index_item.teacher.teacher_typology -%>'>
+    <%= index_item.teacher.teacher_typology %>
+  </td>
+</tr>

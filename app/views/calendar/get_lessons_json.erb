@@ -1,0 +1,17 @@
+[<%@lessons.each do |lesson|%>
+    {
+    "id": <%=h lesson.id %>,
+    "name": "<%=h lesson.topic_display %>",
+    "title": "<%=h lesson.activated_topic.name %>",
+    <% if lesson.place %>"place": "<%=h lesson.place.name %>",<% end %>
+    "start": "<%=h lesson.start_date_ietf %>",
+    "end": "<%=h lesson.end_date_ietf %>",
+    "background_color": "<%=h lesson.background_color %>",
+    "course_color": "<%=h lesson.course_color %>",
+    "title_color": "<%=h lesson.title_color %>",
+    "teacher_name": "<%=h lesson.activated_topic.teacher.full_name %>",
+    "time": "<%=h lesson.time %>",
+    "course": "<%=h lesson.course_display %>",
+    "tip": "<%=h lesson.full_info_tooltip %>"
+    }<%= "," unless lesson == @lessons.last %>
+  <%end%>]

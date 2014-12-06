@@ -1,0 +1,18 @@
+<!--
+$Id: new00.html.erb 171 2009-11-14 04:17:56Z nicb $
+-->
+<h1>Crea le lezioni di <i><%= @at.name %></i></h1>
+<% form_tag(url_for(:action => :new01, :id => @at.id)) do %>
+<% weekdays = ActiveSupport::TimeWithZone.italian_wday_names %>
+<!-- Seleziona i giorni della settimana -->
+<% weekdays.each do |c|%>
+<% checked = false; checked = true if params.has_key?('lesson') && params['lesson'].has_key?('days') && params['lesson']['days'].find(c) %>
+<%= check_box(:lesson, :days, {:multiple => true, :checked => checked}, c) %> <%= c %> <br />
+<% end %>
+<h2> Seleziona il giorno di inizio delle lezioni </h2>
+<!-- seleziona il giorno di partenza delle lezioni -->
+<%= date_select("lesson[date]", :start, :order => [:day, :month, :year],:start_year => Time.zone.now.year, :default => params['date']) %>
+<p>
+<%= submit_tag("Procedi") %> <%= button_to_function("Cancella", 'window.back(); return false;') %>
+</p>
+<% end %>

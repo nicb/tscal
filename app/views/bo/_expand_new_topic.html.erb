@@ -1,0 +1,13 @@
+<!--
+$Id: _expand_new_topic.html.erb 292 2012-08-23 16:26:37Z nicb $
+-->
+<p>Attiva un nuovo insegnamento:</p>
+<% remote_form_for(:bo, :update => 'at', :url => { :action => :close_new_topic, :id => csy.id.to_s }) do |f| -%>
+  <%= render(:partial => 'at/activated_topics/form', :object => f, :locals => { :activated_topic => ActivatedTopic.new }) %>
+  <p>
+    <%= f.submit "Attiva" %>
+  </p>
+<% end %>
+  </ul>
+  </p>
+</div>

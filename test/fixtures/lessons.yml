@@ -1,0 +1,29 @@
+#
+# $Id: lessons.yml 87 2009-09-13 14:03:55Z nicb $
+#
+
+#
+# this fixture has been killed as there's no way to make it work reliably
+# You will have to generate your lessons lists by hand, sorry.
+#
+
+# <%#
+#  topic_name = 'Informatica'
+#  t = Topic.first(:conditions => ["name = ?", topic_name])
+#  raise(ActiveRecord::RecordNotFound, "No \"#{topic_name}\" topic found") unless t && t.valid?
+#  at = ActivatedTopic.first(:conditions => ["topic_id = ?", t.id])
+#  raise(ActiveRecord::RecordNotFound, "No activated_topic found for topic #{t.name}") unless at && at.valid?
+#  iwdays = HashWithIndifferentAccess.new({'Giovedì' => {:start_hour => 10, :start_minute => 0, :dur => 180}, 'Lunedì' => {:start_hour => 15, :start_minute => 30, :dur => 120}, 'Sabato' => {:start_hour => 8, :start_minute => 45, :dur => 60}})
+#  lessons = Lesson.generate_lesson_list(at, Time.zone.parse(Time.zone.today.to_s), iwdays)
+# puts("generating #{lessons.size} lessons")
+# 
+#  lessons.each_with_index do
+#   |l, i|
+#   tag = sprintf("%02d",i)
+# %>
+# lesson_ityo_<%# tag %>:
+#  activated_topic: informatica_tds_year_one
+#  date: <%# l.date.to_s %>
+#  duration: <%# l.duration.to_s %>
+# 
+# <%# end %>

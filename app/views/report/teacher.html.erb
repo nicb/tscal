@@ -1,0 +1,18 @@
+<!-- $Id: teacher.html.erb 236 2010-03-04 15:13:12Z mtisi $ -->
+<h1>
+  Docente: <%= @teacher.full_name -%>
+  &nbsp;
+  <%= link_to_function("Indietro", 'history.back(); return false;') -%>
+  &nbsp;
+  <%= link_to('Torna al Calendario', url_for(:controller => :calendar, :action => :show_js)) -%>
+</h1>
+<table>
+  <tr>
+    <th>Corsi:</th>
+    <td>
+      <table class='teacher_topics'>
+        <%= render(:partial => 'teacher_topic', :collection => @teacher.activated_topics.sort { |a,b| a.topic.name + a.topic.level.to_s <=> b.topic.name + b.topic.level.to_s }) -%>
+      </table>
+    </td>
+  </tr>
+</table>

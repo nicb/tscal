@@ -1,0 +1,12 @@
+
+This file lists all the required gems and plugins used by the tscal
+application:
+
+gems:
+
+- color
+
+plugins:
+
+----
+$Id: README.plugins_and_gems 212 2010-01-29 06:13:04Z nicb $

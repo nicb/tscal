@@ -1,0 +1,39 @@
+#
+# $Id: topics.yml 290 2012-07-31 01:45:43Z nicb $
+#
+
+informatica_1:
+  name: "Informatica"
+  acronym: "INF"
+  level: 1
+  color: "#00FF00"
+
+informatica_2:
+  name: "Informatica"
+  acronym: "INF"
+  level: 2
+  color: "#00FF00"
+
+informatica_3:
+  name: "Informatica"
+  acronym: "INF"
+  level: 3
+  color: "#00FF00"
+
+long_name:
+  name: "This topic has a really long name >16 digits"
+  acronym: "TTHARLN"
+  level: 18
+  color: "#FF0000"
+
+pianoforte:
+  name: "Pianoforte"
+  acronym: "PF"
+  level: 3
+  color: "#ABCDEF"
+
+sda:
+  name: "Storia dell'Arte Moderna e Contemporanea"
+  acronym: "SDA"
+  level: 2
+  color: "#ABCDEF"

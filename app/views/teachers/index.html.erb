@@ -1,0 +1,21 @@
+<!--
+$Id: index.html.erb 248 2010-03-29 14:05:05Z mtisi $
+-->
+<h1>Elenco dei Professori</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @teachers.each do |t| %>
+  <tr>
+    <td><%= link_to t.full_name, t %></td>
+    <td><%= link_to 'Modifica', edit_teacher_path(t) %></td>
+    <td><%= link_to 'Rimuovi', t, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Crea un nuovo professore', new_teacher_path %>

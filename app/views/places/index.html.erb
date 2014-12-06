@@ -1,0 +1,19 @@
+<!--
+$Id: index.html.erb 237 2010-03-08 11:10:50Z moro $
+-->
+
+<h1>Elenco delle Sedi</h1>
+
+<table>
+<% @places.each do |c| %>
+  <tr>
+    <td><b><%= link_to c.name, c %></b></td>
+    <td><%= link_to 'Modifica', edit_place_path(c) %></td>
+    <td><%= link_to 'Rimuovi', c, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuova Sede', new_place_path %>

@@ -1,0 +1,26 @@
+<!--
+$Id: index.html.erb 225 2010-03-01 11:49:11Z moro $
+-->
+<h1>Elenco degli Insegnamenti</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @topics.each do |t| %>
+  <tr>
+    <td>Nome:</td><td><%=t.name %></td>
+    <% if t.level %>
+      <td>Livello:</td><td><%=t.level %></td>
+    <% else %>
+      <td></td><td></td>
+    <% end %>
+    <td>Descrizione:</td><td><%= t.description %></td>
+    <td><%= link_to 'Edit', edit_topic_path(t) %></td>
+    <td><%= link_to 'Destroy', t, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New topic', new_topic_path %>

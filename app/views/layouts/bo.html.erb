@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>tscal</title>
+<%= stylesheet_link_tag "bo" %>
+<%= javascript_include_tag :defaults %>
+</head>
+<body>
+<div id="container">
+  <%= yield %>
+</div>
+<!-- This script will log the access to this page
+cfr http://lloogg.com -->
+<script type="text/javascript">
+lloogg_clientid = "21110018b652cdea";
+</script>
+<script type="text/javascript" src="http://lloogg.com/l.js?c=21110018b652cdea">
+</script>
+</body>
+</html>

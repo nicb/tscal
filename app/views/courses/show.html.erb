@@ -1,0 +1,15 @@
+<!--
+$Id: show.html.erb 208 2010-01-06 20:20:10Z nicb $
+-->
+<%= link_to @course.name, @course %>
+Durata: <%= @course.duration -%> anni
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>
+<% unless @course.course_starting_years.blank? %>
+<ul>
+<% @course.course_starting_years.each do |csy| %>
+<li><%= link_to csy.starting_year, {:controller => :course_starting_years, :action => :show, :id => csy.id} %> </li>
+<% end %>
+</ul>
+<% end %>

@@ -1,0 +1,49 @@
+<!-- $Id: show_html.html.erb 245 2010-03-15 14:43:37Z mtisi $ -->
+<%
+pw = @cwd.week_start - 7.days 
+pm = @cwd.week_start - 1.months
+nw = @cwd.week_start + 7.days
+nm = @cwd.week_start + 1.months
+today = Time.zone.today
+%>
+<div id="header">
+  <input type="hidden" id="dummy-value" />
+  <%= link_to('&#171;', url_for(:action => :show_html, :day => pm.day, :month => pm.month, :year => pm.year, :filter => @selected_option), :title => 'Mese precedente') %>
+  <%= link_to('&lt;',      url_for(:action => :show_html, :day => pw.day, :month => pw.month, :year => pw.year, :filter => @selected_option), :title => 'Settimana precedente') %>
+  <input type="text" readonly="readonly" value="<%= @cwd.week_start.to_date.day -%>/<%= @cwd.week_start.to_date.month -%>/<%= @cwd.week_start.to_date.year -%>" />
+	 al 
+  <input id="date-picker" type="text" readonly="readonly" value="<%= @cwd.week_end.to_date.day %>/<%= @cwd.week_end.to_date.month %>/<%= @cwd.week_end.to_date.year %>" />
+  <%= link_to('&gt;',      url_for(:action => :show_html, :day => nw.day, :month => nw.month, :year => nw.year, :filter => @selected_option), :title => 'Settimana seguente') %>
+  <%= link_to('&#187;', url_for(:action => :show_html, :day => nm.day, :month => nm.month, :year => nm.year, :filter => @selected_option), :title => 'Mese seguente') %>
+  &nbsp; <%= link_to("Oggi", url_for(:action => :show_html, :day => today.day, :month => today.month, :year => today.year, :filter => @selected_option), :title => "#{today.to_date}") -%>
+  &nbsp;&nbsp;
+  <select id='calendar_filter' name='calendar_filter' onchange="<%= "window.location.href = '" + url_for(:controller => :calendar, :action => :show_html) + "?day=#{@cwd.week_start.to_date.day.to_s}&month=#{@cwd.week_start.to_date.month.to_s}&year=#{@cwd.week_start.to_date.year.to_s}&filter=' + this[this.selectedIndex].value;" -%>" >
+    <%= option_groups_from_collection_for_select(@group_options, :group, :group_label, :option_key, :option_value, @selected_option) %>
+  </select>
+
+  <%= link_to("Accedi", url_for(:controller => :bo, :action => :index)) %>
+  <%= link_to("Report", url_for(:controller => :report, :action => :index)) %>
+  <%= link_to("JavaScript", url_for(:controller => :calendar, :action => :show_js)) %>
+
+</div>
+<!-- qui inizia il calendario vero e proprio -->
+
+<div id="calendar" style="height:406px">
+
+  <div id="calendar_header">
+    <div id="column_header_hours">
+      &nbsp;
+    </div>
+    <% @cwd.days.each do |day| %>
+      <div class="column_header <%= @cwd.row_header_special(day) -%>" <% if day.day_start.today? %> style="background-color:Thistle"<% end %> ><b><%= day.day_start.to_date.strftime("%A %d %b")%></b>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render(:partial => @cd.template, :object => @cd.object) %>
+
+</div>
+<p></p>
+<div id="footer">
+  <%= render(:partial => 'shared/footer', :locals => { :revision_string => controller.svn_revision } ) %>
+</div>

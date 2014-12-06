@@ -1,0 +1,29 @@
+<!-- $Id: _lesson.html.erb 237 2010-03-08 11:10:50Z moro $ -->
+<div id="lesson_<%= div_index %>" class="<%= lesson.div_class %>">
+  <%= hidden_field("lesson[#{div_index}]", 'id', :value => lesson.id) -%>
+  <%= hidden_field("lesson[#{div_index}]", 'temp_clone_id', :value => lesson.temp_clone_id) -%>
+	<p>
+	<b>Lezione <%= div_index + 1 %></b>
+	</p>
+	<span>
+	<b>Giorno</b>
+	<%= date_select("lesson[#{div_index}][start_date]", :start_date, lesson.start_date.form_select_options) %>
+	</span>
+	<span>
+    <b>Dalle ore</b>&nbsp;&nbsp;<%= select_lesson_hour(lesson.start_date.hour, :prefix => "lesson[#{div_index}][start_date]") -%>:&nbsp;<%= select_minute(lesson.start_date.min, :prefix => "lesson[#{div_index}][start_date]", :minute_step => 15) %>
+	</span>
+	<span>
+	<b>Durata</b>&nbsp;&nbsp;<%= text_field("lesson[#{div_index}]", "duration", :value => lesson.duration, :size => 4) %>&nbsp;<i>minuti</i>&nbsp;
+	</span>
+	<span>
+	<b>Sede</b>&nbsp;&nbsp;<%= select("lesson[#{div_index}]", "place_id", Place.find(:all).collect {|p| [ p.name, p.id ] }, { :include_blank => true, :selected => lesson.place_id.to_i }) -%><br />
+	</span>
+<% if lesson.div_class == "conflict" %>
+	<p id="<%= lesson.topic.display_tooltip + lesson.start_date.to_s + 'warning' -%>">
+		<%= lesson.warnings.full_messages %>
+	</p>
+<% end %>
+<p>
+  <%= link_to_remote("Elimina questa lezione", :update => "lesson_#{div_index}", :url => remove_at_lesson_url(div_index), :method => :delete) %>
+</p>
+</div>

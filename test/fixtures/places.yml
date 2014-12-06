@@ -1,0 +1,17 @@
+#
+# $Id: places.yml 237 2010-03-08 11:10:50Z moro $
+#
+
+place_one:
+  name: "bertacchi"
+  street: "via roma"
+  number: "22/c"
+  url: "www.roma.it"
+  city: "Manchester"
+
+place_two:
+  name: "eremitani"
+  street: "via padova"
+  number: "22/f"
+  url: "www.padova.it"
+  city: "Boara"

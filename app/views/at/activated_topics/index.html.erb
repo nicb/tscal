@@ -1,0 +1,21 @@
+<!--
+$Id: index.html.erb 225 2010-03-01 11:49:11Z moro $
+-->
+<h1>Lista degli insegnamenti attivati</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @at_activated_topics.each do |at| %>
+  <tr>
+    <td><%= link_to at.topic.name, at_activated_topic_url(at.id) %></td>
+    <td><%= link_to 'Edit', edit_at_activated_topic_url(at.id) %></td>
+    <td><%= link_to 'Destroy', at_activated_topic_url(at.id), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Attiva un nuovo corso', new_at_activated_topic_url %>

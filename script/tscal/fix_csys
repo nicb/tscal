@@ -1,0 +1,74 @@
+#!/usr/bin/env ruby
+#
+# $Id: fix_csys 288 2011-10-21 04:24:25Z nicb $
+#
+# This script fixes the bug that appears when selecting multiple courses for a
+# single activated topic (generally multiple activated topics get selected.
+#
+require File.expand_path(File.join(File.dirname(__FILE__), ['..'] * 2, 'config', 'environment'))
+require 'user'
+
+raise(ArgumentError, "Not enough arguments: #{ARGV.join(', ')}") unless ARGV.size >= 3
+two_months_ago = Time.zone.now - 2.months
+puts("Looking for anything younger than #{two_months_ago}")
+
+acro = ARGV[0]
+level = ARGV[1] == 'none' ? nil : ARGV[1].to_i
+year = ARGV[2].to_i
+courses = ARGV[3..ARGV.size-1]
+raise(ArgumentError, "arguments level (= #{level.to_s}) and/or year (= #{year}) are not appropriate numbers") unless (level.nil? || (level.is_a?(Numeric) && level > 0)) && year.is_a?(Numeric) && year > 2008
+
+puts("lookig for topic \"#{acro}#{level}\" to belong to the following courses: #{courses.join(', ')} for year #{year}")
+t = Topic.find_by_acronym_and_level(acro, level)
+raise(ActiveRecord::RecordNotFound) unless t
+raise ActiveRecord::RecordInvalid.new(t) unless t.valid?
+puts("found topic #{t.inspect}")
+
+ats = t.activated_topics.all(:conditions => ['created_at > ?', two_months_ago])
+puts("Changing #{ats.size} ActivatedTopic objects")
+
+ats.each do
+  |at|
+  courses_already = at.course_starting_years(true).all(:conditions => ['starting_year = ?', year]).map { |csy| csy.course.acronym }
+
+  puts("found one activated topic (teacher: #{at.teacher.last_name}) belonging to courses #{courses_already.join(', ')}")
+  default_answer = 'no'
+  yes_re = Regexp.compile(/^y[e]?[s]?$/i)
+  no_re = Regexp.compile(/^n[o]?$/i)
+  printf("Shall I proceed to fix the courses? [#{default_answer}] ")
+  answer = $stdin.gets
+  answer.chomp!
+  answer = answer =~ yes_re ? 'yes' : default_answer
+  puts("You replied: #{answer}")
+  
+  case answer
+  when yes_re: puts("proceeding...")
+  when no_re: puts("aborting.")
+              exit(0)
+  end
+  
+  courses_to_do = courses - courses_already
+  puts("adding the following courses to topic #{t.acronym}: #{courses_to_do.join(', ')}")
+  attrs_to_share = at.course_topic_relations.first.attributes
+  attrs_to_share.delete('course_starting_year_id')
+  attrs_to_share.delete('id')
+  puts("sharing the following attributes: #{attrs_to_share.inspect}")
+  
+  courses_to_do.each do
+    |course_acro|
+    c = Course.find_by_acronym(course_acro)
+    raise ActiveRecord::RecordNotFound unless c
+    raise ActiveRecord::RecordInvalid.new(c) unless c.valid?
+    this_csy = c.course_starting_years.first(:conditions => ['starting_year = ?', year])
+    raise ActiveRecord::RecordNotFound unless this_csy
+    raise ActiveRecord::RecordInvalid.new(this_csy) unless this_csy.valid?
+    args = attrs_to_share.dup
+    args.update(:course_starting_year => this_csy)
+    ctr = CourseTopicRelation.create(args)
+  end
+  
+  final_csys = at.course_starting_years(true).map { |csy| csy.course.acronym }.join(', ')
+  puts("Done! now the activated topic belongs to the following courses: #{final_csys}")
+end
+
+exit(0)

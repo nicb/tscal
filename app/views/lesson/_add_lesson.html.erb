@@ -1,0 +1,31 @@
+<!--
+$Id: _add_lesson.html.erb 192 2009-12-14 22:49:48Z nicb $
+-->
+
+	<p>
+	<b>Lezione <%= index %></b>
+	</p>
+	<p>
+	<% options = add_lesson.start_date.form_select_options; options.update(:default => add_lesson.start_date) %>
+	<%= date_select("lesson[#{index}]", :day, options) %>
+	</p>
+	<p>
+	<i>dalle ore</i>&nbsp;&nbsp;<%= select_lesson_hour(add_lesson.start_date.hour, :prefix => "lesson[#{index}]") -%>:&nbsp;<%= select_minute(add_lesson.start_date.min, :prefix => "lesson[#{index}]", :minute_step => 15) %>
+	</p>
+	<p>
+	<i>durata</i>&nbsp;&nbsp;<%= text_field("lesson[#{index}]", "duration", :value => add_lesson.duration, :size => 4) %>&nbsp;<i>minuti</i>
+	</p>
+	<p>
+	<%= add_lesson.div_class %>
+	</p>
+	<% if add_lesson.div_class == "conflict" %>
+	<div id="<%= add_lesson.topic.display_tooltip + add_lesson.start_date.to_s + 'warning' -%>" class="<%= add_lesson.div_class %>">
+		<p><%= add_lesson.warnings.full_messages %></p>
+	</div>
+	<% end %>
+
+<%= link_to_remote("Elimina questa lezione", :update => index, :url => { :action => :remove_lesson, :index => index}) %>
+
+</div>
+<div id="<%= index.to_i + 1 %>">
+	<p><%= link_to_remote("Aggiungi un'altra lezione", :update => "#{index.to_i + 1}", :url => { :action => :add_lesson, :at => at.id, :index => (index.to_i + 1).to_s}) %></p>

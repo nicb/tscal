@@ -1,0 +1,52 @@
+<!--
+$Id: new.html.erb 237 2010-03-08 11:10:50Z moro $
+-->
+
+<h1>Nuova Sede</h1>
+
+<% form_for(@place) do |f| %>
+  <%= f.error_messages %>
+<table>
+<tr>
+<td>Nome della sede:</td>
+<td><%= f.text_field :name %></td>
+</tr>
+<tr>
+<td>Via:</td>
+<td><%= f.text_field :street %></td>
+</tr>
+<tr>
+<td>Numero civico:</td>
+<td><%= f.text_field :number %></td>
+</tr>
+<tr>
+<td>Città:</td>
+<td><%= f.text_field :city %></td>
+</tr>
+<tr>
+<td>Indirizzo mappa:</td>
+<td><%= f.text_field :url %></td>
+</tr>
+</table>
+<p>
+<h3>Esempio:</h3>
+<b>Nome della Sede:</b> Bertacchi<br />
+<b>Via:</b> Via Bertacchi<br />
+<b>Numero civio:</b> 132/b<br />
+<b>Città:</b> Padova<br />
+<b>Indirizzo mappa:</b> http://maps.google.it/maps?f=q&source=s_q&hl=it&geocode=&q=padova&sll=45.419721,11.888237&sspn=0.027653,0.077162&ie=UTF8&hq=&hnear=Padova,+Veneto&ll=45.409568,11.876585&spn=0.006914,0.01929&t=h&z=16&iwloc=A<br />
+<br />
+<b>Per trovare l'indirizzo sulla mappa:</b>
+<ul>
+<li>Andare su <a href="http://maps.google.com" target="_new">http://maps.google.com</a></li>
+<li>Trovare la sede inserendo il suo indirizzo e la città</li>
+<li>Dopo essersi assicurati che la sede trovata è corretta, cliccare sulla scritta "<u>link</u>" e copiare il primo indirizzo che compare sul riquadro a comparsa</li>
+<li>Incollatelo sul campo di questo modello</li>
+</ul>
+  <p>
+    <%= f.submit "Crea" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', places_path %>
+

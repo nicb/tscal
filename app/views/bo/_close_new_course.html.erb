@@ -1,0 +1,18 @@
+<!--
+$Id: _close_new_course.html.erb 62 2009-04-16 13:16:20Z moro $
+-->
+    <%= link_to_remote("Aggiungi un nuovo corso", :update => 'course', :url => { :action => :expand_new_course }) %>
+
+    <%# render(:partial => 'close_new_course') %>
+  <ul>
+  <%# 
+    select(:course, :select, Course.selection,{},
+	  { :onchange => "new Ajax.Request('/bo/show_years/' + this[this.selectedIndex].value, { asynchronous: true, evalScripts: true }); return false;"}) 
+  %>
+  <% Course.selection.each do |c| %>
+  <li>
+    <%= link_to(c[0], url_for(:action => :index, :id => c[1])) %>
+  </li>
+  <% end %>
+  </ul>
+  </p>

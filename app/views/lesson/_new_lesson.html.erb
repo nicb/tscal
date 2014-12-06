@@ -1,0 +1,30 @@
+<!--
+$Id: _new_lesson.html.erb 237 2010-03-08 11:10:50Z moro $
+-->
+<div id="<%= index + 1 %>" class="<%= new_lesson.div_class %>">
+	<p>
+	<b>Lezione <%= index + 1 %></b>
+	</p>
+	<span>
+	<b>Giorno</b>
+	<% options = new_lesson.start_date.form_select_options; options.update(:default => new_lesson.start_date) %>
+	<%= date_select("lesson[#{index}]", :day, options) %>
+	</span>
+	<span>
+	<b>Dalle ore</b>&nbsp;&nbsp;<%= select_lesson_hour(new_lesson.start_date.hour, :prefix => "lesson[#{index}]") -%>:&nbsp;<%= select_minute(new_lesson.start_date.min, :prefix => "lesson[#{index}]", :minute_step => 15) %>
+	</span>
+	<span>
+	<b>Durata</b>&nbsp;&nbsp;<%= text_field("lesson[#{index}]", "duration", :value => new_lesson.duration, :size => 4) %>&nbsp;<i>minuti</i>
+	</span>
+	<span>
+	<b>Sede</b>&nbsp;&nbsp;<%= select("lesson[#{div_index}]", "place_id", Place.find(:all).collect {|p| [ p.name, p.id ] }, { :include_blank => true, :selected => lesson.place_id.to_i }) -%><br />
+	</span>
+<% if new_lesson.div_class == "conflict" %>
+	<p id="<%= new_lesson.topic.display_tooltip + new_lesson.start_date.to_s + 'warning' -%>">
+		<%= new_lesson.warnings.full_messages %>
+	</p>
+<% end %>
+<p>
+	<%= link_to_remote("Elimina questa lezione", :update => "#{index.to_i + 1}", :url => { :action => :remove_lesson, :index => (index.to_i + 1).to_s}) %>
+</p>
+</div>

@@ -1,0 +1,11 @@
+<!--
+$Id: _expand_teacher.html.erb 165 2009-11-11 22:33:47Z nicb $
+-->
+<%= link_to_remote(expand_teacher.full_name, :update => "t_" + expand_teacher.id.to_s, :url => {:action => :close_teacher, :id => expand_teacher.id}) %>
+<ul>
+<li>Nome: <i><%= expand_teacher.first_name %></i></li>
+<li>Cognome: <i><%= expand_teacher.last_name %></i></li>
+<li>Email: <i><a href="mailto:<%= expand_teacher.email %>"><%= expand_teacher.email %></a></i></li>
+<li>Url: <i><a href="http://<%= expand_teacher.url %>" target="_new"><%= expand_teacher.url %></a></i></li>
+<li>Tipologia: <i><%= expand_teacher.teacher_typology_extended %></i></li>
+</ul>

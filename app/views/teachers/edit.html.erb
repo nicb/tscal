@@ -1,0 +1,40 @@
+<!--
+$Id: edit.html.erb 173 2009-11-16 17:36:54Z moro $
+-->
+<h1>Modifica il Professore - <i><%= @teacher.full_name %></i></h1>
+
+<% form_for(@teacher) do |f| %>
+  <%= f.error_messages %>
+<table>
+<tr>
+	<td><b>Username:</b></td>
+	<td><%= @teacher.login %></td>
+</tr>
+<tr>
+	<td><b>Nome:</b></td>
+	<td><%= f.text_field :first_name, :value => @teacher.first_name %></td>
+</tr>
+<tr>
+	<td><b>Cognome:</b></td>
+	<td><%= f.text_field :last_name, :value => @teacher.last_name %></td>
+</tr>
+<tr>
+	<td><b>Email:</b></td>
+	<td><%= f.text_field :email, :value => @teacher.email %></td>
+</tr>
+<tr>
+	<td><b>Website:</b></td>
+	<td><%= f.text_field :url, :value => @teacher.url %></td>
+</tr>
+<tr>
+	<td><b>Tipologia:</b></td>
+	<td><%= f.text_field :teacher_typology, :value => @teacher.teacher_typology %></td>
+</tr>
+</table>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @teacher %> |
+<%= link_to 'Back', teachers_path %>
